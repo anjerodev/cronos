@@ -1,0 +1,38 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: infra/docker/server.Dockerfile
+    environment:
+      - PORT=${PORT:-3000}
+      - NODE_ENV=production
+    ports:
+      - ${PORT:-3000}:${PORT:-3000}
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:${PORT:-3000}/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  client:
+    build:
+      context: .
+      dockerfile: infra/docker/client.Dockerfile
+    environment:
+      - PORT=${PORT:-4321}
+      - NODE_ENV=production
+      - SERVER_API_URL=${SERVER_API_URL:-http://server:3000}
+    ports:
+      - ${PORT:-4321}:${PORT:-4321}
+    restart: unless-stopped
+    depends_on:
+      - server

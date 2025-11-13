@@ -1,0 +1,14 @@
+{
+  "name": "@apps/server",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build src/index.ts --outdir dist"
+  },
+  "dependencies": {
+    "@packages/shared": "workspace:*",
+    "hono": "4.10.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
