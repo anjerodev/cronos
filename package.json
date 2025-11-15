@@ -3,7 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --filter '*' dev"
+    "dev": "bun --filter '*' dev",
+    "build:server": "bun --filter '@apps/server' build",
+    "build:shared": "bun --filter '@packages/shared' build"
   },
   "workspaces": [
     "packages/*",
