@@ -7,7 +7,9 @@ services:
       - PORT=${PORT:-3000}
       - NODE_ENV=production
     ports:
-      - ${PORT:-3000}:${PORT:-3000}
+      - ${PORT:-3000}
+    expose:
+      - ${PORT:-3000}
     restart: unless-stopped
     healthcheck:
       test:
@@ -32,7 +34,9 @@ services:
       - NODE_ENV=production
       - SERVER_API_URL=${SERVER_API_URL:-http://server:3000}
     ports:
-      - ${PORT:-4321}:${PORT:-4321}
+      - ${PORT:-4321}
+    expose:
+      - ${PORT:-4321}
     restart: unless-stopped
     depends_on:
       - server
