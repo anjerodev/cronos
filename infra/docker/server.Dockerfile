@@ -26,7 +26,7 @@ COPY packages/shared/ ./packages/shared/
 
 ENV NODE_ENV=production
 # RUN bun test
-RUN cd apps/server && bun run build
+RUN bun run --filter @apps/server build
 
 FROM base AS release
 COPY --from=install /temp/prod/node_modules ./node_modules
