@@ -8,4 +8,8 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
+  server: {
+    host: true, // This enables listening on all network interfaces
+    port: 4321,
+  },
 });
