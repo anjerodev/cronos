@@ -19,8 +19,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
-      networks:
-        - cronos-net
 
   client:
     build:
@@ -34,9 +32,3 @@ services:
     depends_on:
       server:
         condition: service_healthy
-    networks:
-      - cronos-net
-
-networks:
-  cronos-net:
-    driver: bridge
