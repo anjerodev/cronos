@@ -1,8 +1,8 @@
 services:
   server:
     build:
-      context: ./apps/server
-      dockerfile: ../infra/docker/server.Dockerfile
+      context: .
+      dockerfile: infra/docker/server.Dockerfile
     ports:
       - 3000
     restart: unless-stopped
@@ -22,8 +22,8 @@ services:
 
   client:
     build:
-      context: ./apps/client
-      dockerfile: ../infra/client.Dockerfile
+      context: .
+      dockerfile: infra/client.Dockerfile
       args:
         - SERVER_API_URL=http://server:3000
     ports:
