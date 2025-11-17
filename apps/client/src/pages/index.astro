@@ -8,6 +8,9 @@ let error = null;
 
 try {
   const serverData = await fetch(`${SERVER_API_URL}/api/hello`);
+  if (!serverData.ok) {
+    throw new Error(`Failed to fetch data from server: ${serverData.statusText}`);
+  }
   const serverDataJson = await serverData.json();
   data = serverDataJson;
 } catch (error) {
@@ -20,8 +23,10 @@ try {
 
 <Layout>
 	<Welcome>
-    <h1>Hello from Cronos</h1>
-    <p>Server API URL: {SERVER_API_URL}</p>
-		<pre>{JSON.stringify({data, error}, null, 2)}</pre>
+    <div>
+      <h1>Hello from Cronos</h1>
+      <p>Server API URL: {SERVER_API_URL}</p>
+      <pre>{JSON.stringify({data, error}, null, 2)}</pre>
+    </div>
 	</Welcome>
 </Layout>
