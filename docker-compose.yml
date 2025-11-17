@@ -7,7 +7,7 @@ services:
       - PORT=3000
       - NODE_ENV=production
     ports:
-      - ${SERVER_PORT:-3000}:3000
+      - ${SERVER_PORT:-3000}
     restart: unless-stopped
     healthcheck:
       test:
@@ -27,13 +27,13 @@ services:
     build:
       context: .
       dockerfile: infra/docker/client.Dockerfile
-    ports:
-      - ${CLIENT_PORT:-4321}:4321
     environment:
       - HOST=0.0.0.0
       - PORT=4321
       - NODE_ENV=production
       - SERVER_API_URL=http://server:3000
+    ports:
+      - ${CLIENT_PORT:-4321}
     restart: unless-stopped
     depends_on:
       - server
