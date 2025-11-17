@@ -6,8 +6,6 @@ services:
     environment:
       - PORT=${PORT:-3000}
       - NODE_ENV=production
-    ports:
-      - ${PORT:-3000}
     expose:
       - ${PORT:-3000}
     restart: unless-stopped
@@ -30,11 +28,10 @@ services:
       context: .
       dockerfile: infra/docker/client.Dockerfile
     environment:
+      - HOST=0.0.0.0
       - PORT=${PORT:-4321}
       - NODE_ENV=production
       - SERVER_API_URL=${SERVER_API_URL:-http://server:3000}
-    ports:
-      - ${PORT:-4321}
     expose:
       - ${PORT:-4321}
     restart: unless-stopped
