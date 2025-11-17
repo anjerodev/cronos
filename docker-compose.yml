@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: infra/docker/server.Dockerfile
-    ports:
-      - "8080:8080"
     restart: unless-stopped
     healthcheck:
       test:
@@ -28,8 +26,6 @@ services:
       dockerfile: infra/docker/client.Dockerfile
     environment:
       - SERVER_API_URL=http://server:8080
-    ports:
-      - "4321:4321"
     restart: unless-stopped
     depends_on:
       server:
