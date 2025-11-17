@@ -7,7 +7,7 @@ services:
       - PORT=3000
       - NODE_ENV=production
     ports:
-      - 3000:3000
+      - ${SERVER_PORT:-3000}:3000
     expose:
       - 3000
     restart: unless-stopped
@@ -30,7 +30,7 @@ services:
       context: .
       dockerfile: infra/docker/client.Dockerfile
     ports:
-      - 4321:4321
+      - ${CLIENT_PORT:-4321}:4321
     environment:
       - HOST=0.0.0.0
       - PORT=4321
