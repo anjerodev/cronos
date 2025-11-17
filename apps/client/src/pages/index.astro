@@ -6,7 +6,7 @@ const SERVER_API_URL = import.meta.env.SERVER_API_URL;
 let data = null;
 
 try {
-  console.log(SERVER_API_URL);
+  console.log({apiUrl:SERVER_API_URL});
   const serverData = await fetch(`${SERVER_API_URL}/api/hello`);
   const serverDataJson = await serverData.json();
   data = serverDataJson;
