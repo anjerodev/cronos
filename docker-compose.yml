@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: infra/docker/client.Dockerfile
       args:
-        - SERVER_API_URL=http://server:3000
+        - SERVER_API_URL=http://localhost:3000
     ports:
       - "4321:4321"
     restart: unless-stopped
