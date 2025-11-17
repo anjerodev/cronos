@@ -22,3 +22,5 @@ export default {
   hostname: "0.0.0.0",
   fetch: app.fetch,
 };
+
+console.log("🚀 Server running in", process.env.NODE_ENV, "mode");

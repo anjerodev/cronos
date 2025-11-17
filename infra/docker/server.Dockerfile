@@ -36,4 +36,5 @@ COPY --from=prerelease /app/apps/server/package.json .
 
 # run the app
 USER bun
+ENV NODE_ENV=production
 ENTRYPOINT [ "bun", "run", "index.js" ]
