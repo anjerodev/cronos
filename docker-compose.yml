@@ -27,11 +27,6 @@ services:
     build:
       context: .
       dockerfile: infra/docker/client.Dockerfile
-    environment:
-      - HOST=0.0.0.0
-      - PORT=4321
-      - NODE_ENV=production
-      - SERVER_API_URL=http://server:3000
     ports:
       - ${CLIENT_PORT:-4321}
     restart: unless-stopped
