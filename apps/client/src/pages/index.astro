@@ -2,9 +2,12 @@
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-const serverData = await fetch(`${import.meta.env.SERVER_API_URL}/api/hello`);
+const SERVER_API_URL = import.meta.env.SERVER_API_URL;
 let data = null;
+
 try {
+  console.log(SERVER_API_URL);
+  const serverData = await fetch(`${SERVER_API_URL}/api/hello`);
   const serverDataJson = await serverData.json();
   data = serverDataJson;
 } catch (error) {

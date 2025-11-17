@@ -31,7 +31,7 @@ services:
       - HOST=0.0.0.0
       - PORT=${PORT:-4321}
       - NODE_ENV=production
-      - SERVER_API_URL=${SERVER_API_URL:-http://server:3000}
+      - SERVER_API_URL=${SERVER_API_URL:-http://localhost:3000}
     expose:
       - ${PORT:-4321}
     restart: unless-stopped
