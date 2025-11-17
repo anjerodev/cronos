@@ -4,19 +4,24 @@ import Layout from '../layouts/Layout.astro';
 
 const SERVER_API_URL = import.meta.env.SERVER_API_URL;
 let data = null;
+let error = null;
 
 try {
-  console.log({apiUrl:SERVER_API_URL});
   const serverData = await fetch(`${SERVER_API_URL}/api/hello`);
   const serverDataJson = await serverData.json();
   data = serverDataJson;
 } catch (error) {
   console.error(error);
+  if (error instanceof Error) {
+    error = error.message;
+  }
 }
 ---
 
 <Layout>
 	<Welcome>
-		<pre>{JSON.stringify(data, null, 2)}</pre>
+    <h1>Hello from Cronos</h1>
+    <p>Server API URL: {SERVER_API_URL}</p>
+		<pre>{JSON.stringify({data, error}, null, 2)}</pre>
 	</Welcome>
 </Layout>
