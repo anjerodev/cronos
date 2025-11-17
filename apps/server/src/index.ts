@@ -18,7 +18,7 @@ app.get("/api/hello", (c) => {
 });
 
 export default {
-  port: 3000,
+  port: 8080,
   hostname: "0.0.0.0",
   fetch: app.fetch,
 };
