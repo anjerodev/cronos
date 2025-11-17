@@ -2,8 +2,18 @@
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
+const serverData = await fetch(`${import.meta.env.SERVER_API_URL}/api/hello`);
+let data = null;
+try {
+  const serverDataJson = await serverData.json();
+  data = serverDataJson;
+} catch (error) {
+  console.error(error);
+}
 ---
 
 <Layout>
-	<Welcome/>
+	<Welcome>
+		<pre>{JSON.stringify(data, null, 2)}</pre>
+	</Welcome>
 </Layout>
