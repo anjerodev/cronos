@@ -8,8 +8,6 @@ services:
       - NODE_ENV=production
     ports:
       - ${SERVER_PORT:-3000}:3000
-    expose:
-      - 3000
     restart: unless-stopped
     healthcheck:
       test:
@@ -36,8 +34,6 @@ services:
       - PORT=4321
       - NODE_ENV=production
       - SERVER_API_URL=http://server:3000
-    expose:
-      - 4321
     restart: unless-stopped
     depends_on:
       - server
