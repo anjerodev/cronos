@@ -1,7 +1,7 @@
 services:
   server:
     build:
-      context: .
+      context: ./apps/server
       dockerfile: infra/docker/server.Dockerfile
     environment:
       - PORT=3000
@@ -25,7 +25,7 @@ services:
 
   client:
     build:
-      context: .
+      context: ./apps/client
       dockerfile: infra/docker/client.Dockerfile
       args:
         - HOST=0.0.0.0
