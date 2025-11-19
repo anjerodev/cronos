@@ -5,10 +5,41 @@ const app = new Hono();
 
 app.use(cors());
 
-let users = [
-  { id: 1, name: "John Doe" },
-  { id: 2, name: "Jane Doe" },
+const names = [
+  "John",
+  "Jane",
+  "Kevin",
+  "Michael",
+  "Sarah",
+  "David",
+  "Emma",
+  "Chris",
+  "Olivia",
+  "Daniel",
+  "Sophia",
+  "Matthew",
 ];
+const lastNames = [
+  "Doe",
+  "Miller",
+  "Johnson",
+  "Smith",
+  "Williams",
+  "Brown",
+  "Jones",
+  "Garcia",
+  "Martinez",
+  "Anderson",
+  "Taylor",
+  "Thomas",
+];
+const randomName = () => {
+  const name = names[Math.floor(Math.random() * names.length)];
+  const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  return `${name} ${lastName}`;
+};
+
+let users: { id: number; name: string }[] = [];
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
@@ -20,7 +51,7 @@ app.get("/health", (c) => {
 
 app.get("/api/users", (c) => {
   console.log(users);
-  users.push({ id: 3, name: "Other user" });
+  users.push({ id: users.length + 1, name: randomName() });
   return c.json(users);
 });
 
