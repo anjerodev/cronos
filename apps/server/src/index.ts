@@ -5,6 +5,11 @@ const app = new Hono();
 
 app.use(cors());
 
+let users = [
+  { id: 1, name: "John Doe" },
+  { id: 2, name: "Jane Doe" },
+];
+
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
@@ -13,8 +18,10 @@ app.get("/health", (c) => {
   return c.json({ status: "ok" });
 });
 
-app.get("/api/hello", (c) => {
-  return c.json({ message: "Hello API!" });
+app.get("/api/users", (c) => {
+  console.log(users);
+  users.push({ id: 3, name: "Other user" });
+  return c.json(users);
 });
 
 export default app;

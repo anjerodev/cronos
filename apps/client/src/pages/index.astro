@@ -7,7 +7,7 @@ let data = null;
 let error = null;
 
 try {
-  const serverData = await fetch(`${SERVER_API_URL}/api/hello`);
+  const serverData = await fetch(`${SERVER_API_URL}/api/users`);
   if (!serverData.ok) {
     throw new Error(`Failed to fetch data from server: ${serverData.statusText}`);
   }
