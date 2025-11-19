@@ -17,6 +17,8 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    networks:
+      - cronos-fullstack-k55lwc
 
   client:
     build:
@@ -30,3 +32,10 @@ services:
     depends_on:
       server:
         condition: service_healthy
+    networks:
+      - cronos-fullstack-k55lwc
+
+networks:
+  cronos-fullstack-k55lwc:
+    name: cronos-fullstack-k55lwc
+    external: true
