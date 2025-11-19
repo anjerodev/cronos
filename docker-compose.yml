@@ -11,7 +11,7 @@ services:
           "CMD",
           "bun",
           "-e",
-          "process.exit(await fetch('http://localhost:8080/health').then(r => r.ok ? 0 : 1))",
+          "process.exit(await fetch('http://localhost:3000/health').then(r => r.ok ? 0 : 1))",
         ]
       interval: 30s
       timeout: 10s
@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: infra/docker/client.Dockerfile
     environment:
-      - SERVER_API_URL=http://server:8080
+      - SERVER_API_URL=http://server:3000
     restart: unless-stopped
     depends_on:
       server:

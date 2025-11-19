@@ -17,10 +17,6 @@ app.get("/api/hello", (c) => {
   return c.json({ message: "Hello API!" });
 });
 
-export default {
-  port: 8080,
-  hostname: "0.0.0.0",
-  fetch: app.fetch,
-};
+export default app;
 
 console.log("🚀 Server running in", process.env.NODE_ENV, "mode");
